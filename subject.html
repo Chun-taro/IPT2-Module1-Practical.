@@ -1,151 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <title>Instructor Form with Side Navbar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    /* Sidebar styles */
+    .sidebar {
+      width: 200px;
+      background-color: #333;
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      outline: none;
+    }
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: #575757;
+    }
 
-    <title>SB Admin 2 - Dashboard</title>
+    /* Main content container */
+    .main-content {
+      flex-grow: 1;
+      padding: 40px 20px;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
 
-    <!-- Custom fonts for this template
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    /* Form container styling */
+    #formContainer {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 320px;
+      text-align: center;
+    }
 
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    
-    <script>
-        
-    </script>
+    /* Input styling */
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
 
+    button#submitBtn {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button#submitBtn:hover {
+      background-color: #45a049;
+    }
+
+    #resultDiv {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+      text-align: left;
+    }
+  </style>
 </head>
+<body>
 
-<body id="page-top">
+  <nav class="sidebar">
+    <a href="instructor.html" class="active">Instructor</a>
+    <a href="student.html">Student</a>
+  </nav>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <li class="nav-item active">
-                <a class="nav-link" href="subject.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Subject</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="student.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Student</span></a>
-            </li>
-
-            
-        </ul>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                
-                <!-- Begin Page Content -->
-                <div class="container-fluid mt-3">
-                    <form class="g-3" id="subjectForm"></form>
-                        <div class="row">
-                            <div class="col-4">
-                                <label for="subjectCode" class="form-label">Subject Code</label>
-                                <input type="text" class="form-control" id="subjectCode">
-                            </div>
-                            <div class="col-4">
-                                <label for="subjectName" class="form-label">Subject Name</label>
-                                <input type="text" class="form-control" id="subjectName">
-                            </div>
-                            <div class="col-4">
-                                <label for="units" class="form-label">Units</label>
-                                <input type="number" class="form-control" id="units">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 d-flex justify-content-end mt-2">
-                                <button type="button" class="btn btn-primary" id="addSubject">Add Subject</button>
-                            </div>
-                        </div>
-                    </form>
-                    <br>
-                    <br>
-                    <div class="row">
-                        <table class="table table-striped" id="">
-                            <tbody>
-                                <thead>
-                                    <tr>
-                                        <th>Subject Code</th>
-                                        <th>Subject Name</th>
-                                        <th>Units</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="table-content">
-                                    <!-- <tr>
-                                        <td>1001</td>
-                                        <td>CASERES, KLEVIE JUN ROFLO</td>
-                                        <td>kleviecaseres@buksu.edu.ph</td>
-                                        <td>Apo Macote, Malaybalay City</td>
-                                        <td>
-                                            <input class="btn btn-warning" type="button" value="Edit">
-                                            <input class="btn btn-danger" type="button" value="Delete">
-                                        </td>
-                                    </tr> -->
-                                </tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-           
-        </div>
-        <!-- End of Content Wrapper -->
-
+  <main class="main-content">
+    <div id="formContainer">
+      <h2>Enter Instructor Details</h2>
+      <form id="detailsForm">
+        <input type="text" placeholder="Instructor Name" id="instructorNameInput" />
+        <input type="text" placeholder="Subject Name" id="subjectNameInput" />
+        <input type="text" placeholder="Subject Code" id="subjectCodeInput" />
+        <button type="submit" id="submitBtn">Submit</button>
+      </form>
+      <div id="resultDiv"></div>
     </div>
+  </main>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const form = document.getElementById('detailsForm');
+    const resultDiv = document.getElementById('resultDiv');
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    
+      const instructorName = document.getElementById('instructorNameInput').value.trim();
+      const subjectName = document.getElementById('subjectNameInput').value.trim();
+      const subjectCode = document.getElementById('subjectCodeInput').value.trim();
 
-    <script src="js/app.js"></script>
+      resultDiv.innerHTML = `
+        <h3>Instructor Details:</h3>
+        <p><strong>Instructor Name:</strong> ${instructorName}</p>
+        <p><strong>Subject Name:</strong> ${subjectName}</p>
+        <p><strong>Subject Code:</strong> ${subjectCode}</p>
+      `;
+    });
+
+    // Optional: highlight active link by URL
+    const links = document.querySelectorAll('.sidebar a');
+    links.forEach(link => {
+      if (link.href === window.location.href) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
-
 </html>
